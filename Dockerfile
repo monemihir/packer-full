@@ -1,4 +1,4 @@
-FROM hashicorp/packer:latest
+FROM hashicorp/packer:1.6.0
 LABEL maintainer="Mihir Mone <monemihir@hotmail.com>"
 
 RUN apk --no-cache add ansible py-pip py-boto
@@ -9,6 +9,8 @@ RUN ansible --version
 
 RUN apk --no-cache add docker openrc
 RUN rc-update add docker boot
+
+RUN docker --version
 
 # Packer needs this set:
 # https://github.com/mitchellh/packer/blob/49067e732a66c9f7a87843a2c91100de112b21cc/provisioner/ansible/provisioner.go#L127
